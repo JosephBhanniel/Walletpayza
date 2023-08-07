@@ -15,25 +15,25 @@ class Transactions extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'company_id',
-        'employee_id',
         'amount',
-        'transaction_type',
+        'sender_wallet_id',
+        'receiver_wallet_id',
+        'type',
     ];
 
     /**
      * Get the company that sent the transaction.
      */
-    public function sender()
+    public function senderWallet()
     {
-        return $this->belongsTo(Company::class, 'company_id');
+        return $this->belongsTo(Wallet::class, 'sender_wallet_id');
     }
 
     /**
-     * Get the employee that received the transaction.
+     * Get the receiver wallet of the transaction.
      */
-    public function receiver()
+    public function receiverWallet()
     {
-        return $this->belongsTo(Employee::class, 'employee_id');
+        return $this->belongsTo(Wallet::class, 'receiver_wallet_id');
     }
 }

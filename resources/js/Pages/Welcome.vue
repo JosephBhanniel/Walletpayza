@@ -1,3 +1,4 @@
+
 <template>
     <div>
         <div v-if="canLogin" class="bg-gradient-to-r from-green-500 to-gray-900">
@@ -69,5 +70,4 @@
     phpVersion: String,
   });
   </script>
-  
  

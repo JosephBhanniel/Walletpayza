@@ -9,13 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create('transactions', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+    public function up()
+{
+    Schema::create('transactions', function (Blueprint $table) {
+        $table->id();
+        $table->decimal('amount', 10, 2);
+        $table->unsignedBigInteger('sender_wallet_id');
+        $table->unsignedBigInteger('receiver_wallet_id');
+        $table->string('type');
+        $table->timestamps();
+
+    
+    });
+}
+
 
     /**
      * Reverse the migrations.
