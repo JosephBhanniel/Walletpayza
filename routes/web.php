@@ -30,6 +30,24 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+        $user = auth()->user();
+       // Custom logic based on the user's role
+        if ($user->role === 'Superadmin') {
+            // Example: Get admin-specific data from the database
+            $data = 'Superadmin';
+        } elseif ($user->role === 'employee') {
+            // Example: Get employee-specific data from the database
+            $data = 'Employee';
+        }elseif ($user->role === 'company') {
+            // Example: Get employee-specific data from the database
+            $data = 'Company';
+        }
+         else {
+            // Default data or fallback logic if the user role is not company,employee or admin
+            $data = 'Hello, User!';
+        }
+
+        // Render the 'Dashboard' component with custom data
+        return Inertia::render($data);
     })->name('dashboard');
 });

@@ -7,10 +7,12 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import SelectInput from '@/Components/SelectInput.vue';
 
 const form = useForm({
     name: '',
     email: '',
+    role: '',
     password: '',
     password_confirmation: '',
     terms: false,
@@ -57,6 +59,19 @@ const submit = () => {
                     autocomplete="username"
                 />
                 <InputError class="mt-2" :message="form.errors.email" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="role" value="Account type" />
+                <SelectInput
+                    id="role"
+                    v-model="form.role"
+                    type="text"
+                    class="mt-1 block w-full"
+                    required
+                    autocomplete="role"
+                />
+                <InputError class="mt-2" :message="form.errors.role" />
             </div>
 
             <div class="mt-4">
