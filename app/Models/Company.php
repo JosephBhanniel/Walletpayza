@@ -16,7 +16,7 @@ class Company extends Model
      */
     protected $fillable = [
         'name',
-        'main_wallet_balance',
+        'email',
     ];
 
     /**
@@ -25,7 +25,7 @@ class Company extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'main_wallet_balance' => 'decimal:2', // Change the cast type if needed
+        'email_verified_at' => 'datetime',
     ];
 
     // Define relationships and other methods here

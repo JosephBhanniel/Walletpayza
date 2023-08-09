@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('company', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('main_wallet_balance', 10, 2);
+            $table->string('email');
             $table->timestamps();
         });
     }
