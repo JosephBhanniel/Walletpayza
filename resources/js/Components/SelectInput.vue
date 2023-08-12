@@ -26,7 +26,7 @@ defineExpose({ focus: () => select.value.focus() });
         @change="$emit('update:modelValue', $event.target.value)"
     >
         <option value="" disabled>Select an option</option>
-        <option value="company">Company</option>
-        <option value="employee">Employee</option>
+        <option value="Company">Company</option>
+        <option value="Employee">Employee</option>
     </select>
 </template>

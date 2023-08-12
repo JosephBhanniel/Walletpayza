@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Wallets;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Company extends Model
 {
@@ -29,4 +30,10 @@ class Company extends Model
     ];
 
     // Define relationships and other methods here
+    public function wallet()
+    {
+        return $this->hasOne(Wallets::class);
+    }
 }
+
+

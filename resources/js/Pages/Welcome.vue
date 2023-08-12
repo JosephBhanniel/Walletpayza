@@ -22,8 +22,9 @@
         <p class="text-white mb-8 ">
   Your financial companion for businesses and employees. Manage your money hassle-free, and enjoy secure digital wallets.<br> <em>Simple, seamless, and empowering</em>.
 </p>
-
+ <Link :href="route('login')">
         <button class="px-6 py-3 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Get Started</button>
+      </Link>
       </div>
     </section>
   

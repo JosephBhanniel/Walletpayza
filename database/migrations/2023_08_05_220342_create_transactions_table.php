@@ -16,7 +16,7 @@ return new class extends Migration
         $table->decimal('amount', 10, 2);
         $table->unsignedBigInteger('sender_wallet_id');
         $table->unsignedBigInteger('receiver_wallet_id');
-        $table->string('type');
+        $table->string('type')->default('transfer');
         $table->timestamps();
 
     

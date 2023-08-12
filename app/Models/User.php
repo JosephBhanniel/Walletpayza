@@ -43,6 +43,19 @@ class User extends Authenticatable
         'two_factor_secret',
     ];
 
+
+
+        public function isCompany()
+    {
+        return $this->role === 'Company'; // Replace 'company' with your actual company role identifier
+    }
+
+    public function isEmployee()
+    {
+        return $this->role === 'Employee'; // Replace 'employee' with your actual employee role identifier
+    }
+
+
     /**
      * The attributes that should be cast.
      *
