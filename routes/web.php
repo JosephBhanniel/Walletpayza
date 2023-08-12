@@ -26,48 +26,6 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         $user = auth()->user();
-//         $options = [];
-//        // Custom logic based on the user's role
-//         if ($user->role === 'Superadmin') {
-//             // Example: Get admin-specific data from the database
-//             $data = 'Superadmin';
-//             $options = [
-//                 "id" => $user->id,
-//                 "name" => $user->name
-//             ];
-            
-//         } elseif ($user->role === 'Employee') {
-//             // Example: Get employee-specific data from the database
-//             $data = 'Employee';
-//             $options = [
-//                 "id" => $user->id,
-//                 "name" => $user->name
-//             ];
-//         }elseif ($user->role === 'Company') {
-//             // Example: Get employee-specific data from the database
-//             $data = 'Company';
-//             $options = [
-//                 "id" => $user->id,
-//                 "name" => $user->name
-//             ];
-//         }
-//          else {
-//             // Default data or fallback logic if the user role is not company,employee or admin
-//             $data = 'Hello, User!';
-//         }
-
-//         // Render the 'Dashboard' component with custom data
-//         return Inertia::render($data, $options);
-//     })->name('dashboard');
-// });
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -75,25 +33,9 @@ Route::middleware([
 ])->group(function () {
     Route::get('/Company', [CompanyController::class, 'index'])->name('dashboard');
     Route::get('/Employee', [EmployeeController::class, 'index'])->name('dashboard');
+    Route::put('/deposit', [CompanyController::class, 'deposit'])->name('deposit');
+    Route::put('/send', [CompanyController::class, 'transferToEmployee'])->name('send');
 
 });
-Route::put('/deposit', [CompanyController::class, 'deposit'])->name('deposit');
-Route::put('/send', [CompanyController::class, 'transferToEmployee'])->name('send');
 
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//           Route::get('/Company', [CompanyController::class, 'index'])->name('dashboard');
-//           Route::get('/Employee', [EmployeeController::class, 'index'])->name('dashboard');
-// });
-
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//           Route::get('/Employee', [EmployeeController::class, 'index'])->name('dashboard');
-// });
 

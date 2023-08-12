@@ -15,8 +15,7 @@ class CompanyController extends Controller
 
 {        
 
-
-    // // Function to load cash into the company's wallet
+  // Function to load cash into the company's wallet
     public function deposit(Request $request)
     {
         // Validate input
@@ -116,7 +115,7 @@ class CompanyController extends Controller
     {
         $id = Auth::user()->company_id;
 
-        // Fetch summary data using the user's ID
+        // Fetch summary data using the company_id
         $summary_data = CompanyController::companySummary($id);
 
         // Pass the summary data to the view using Inertia

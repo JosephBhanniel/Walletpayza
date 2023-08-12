@@ -5,8 +5,14 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ $page.props.auth.user.role }} Wallet 
                 <div class="flex justify-end mt-4 space-x-4">
-                            <button @click="toggleDepositForm" class="px-4 py-2 bg-green-500 text-white rounded">Deposit</button>
-                            <button @click="toggleSendForm" class="px-4 py-2 bg-blue-500 text-white rounded">Send</button>
+                            <button @click="toggleDepositForm" class="px-4 py-2 bg-green-500 text-white rounded">
+                             <span v-if="!showDepositForm">Deposit</span>
+                             <span v-else>Hide Form</span>
+                            </button>
+                            <button @click="toggleSendForm" class="px-4 py-2 bg-blue-500 text-white rounded">
+                                <span v-if="!showSendForm">Send</span>
+                             <span v-else>Hide Form</span>
+                            </button>
                         </div>
             </h2>
         </template>
@@ -15,7 +21,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
                     <div>
-                        <h1 class="text-center text-2xl">Your Wallet Metrics</h1>
+                        <h1 class="text-center text-2xl">Company Account Summary</h1>
                         <div class="md:flex justify-center">
                             <p class="m-2 p-2 bg-indigo-300 rounded shadow">Total Number of Employees: {{ summary_data.employee_count }}</p>
                             <p class="m-2 p-2 bg-indigo-300 rounded shadow">Total Wallet Amount: {{ summary_data.total_amount }}</p>
@@ -117,14 +123,13 @@ const props = defineProps({
     }
 });
 
-
 const showDepositForm = ref(false);
 const showSendForm = ref(false);
 
 // Form data
 const depositForm = useForm({
-    depositAmount: 0,
-    Wallet_id: 0,
+    depositAmount: null,
+    Wallet_id: null,
 });
 
 const sendForm = useForm({
@@ -136,6 +141,7 @@ const sendForm = useForm({
 const toggleDepositForm = () => {
     showDepositForm.value = !showDepositForm.value;
     showSendForm.value = false; // Hide the send form
+
 };
 
 const toggleSendForm = () => {
