@@ -26,16 +26,37 @@ Route::get('/', function () {
     ]);
 });
 
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->group(function () {
+   
+//     Route::get('/Employee', [EmployeeController::class, 'index'])->name('dashboard');
+ 
+// });
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
+    'role:Company', // Adjust the role name(s) as needed
 ])->group(function () {
     Route::get('/Company', [CompanyController::class, 'index'])->name('dashboard');
-    Route::get('/Employee', [EmployeeController::class, 'index'])->name('dashboard');
     Route::put('/deposit', [CompanyController::class, 'deposit'])->name('deposit');
     Route::put('/send', [CompanyController::class, 'transferToEmployee'])->name('send');
+    // Add more admin-specific routes here
+});
 
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    'role:Employee', // Adjust the role name(s) as needed
+])->group(function () {
+    Route::get('/Employee', [EmployeeController::class, 'index'])->name('dashboard');
+    // Add more admin-specific routes here
 });
 
 
