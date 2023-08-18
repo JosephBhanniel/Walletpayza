@@ -20,6 +20,8 @@ class RedirectIfAuthenticated
                 return redirect(RouteServiceProvider::COMPANY_HOME);
             } elseif ($user->isEmployee()) {
                 return redirect(RouteServiceProvider::EMPLOYEE_HOME);
+            } elseif ($user->isAdmin()) {
+                return redirect(RouteServiceProvider::ADMIN_HOME);
             }
         }
 

@@ -61,7 +61,7 @@ return [
     |
     */
 
-    'home' => RouteServiceProvider::COMPANY_HOME || RouteServiceProvider::EMPLOYEE_HOME,
+    'home' => RouteServiceProvider::COMPANY_HOME || RouteServiceProvider::EMPLOYEE_HOME || RouteServiceProvider::ADMIN_HOME,
 
     /*
     |--------------------------------------------------------------------------

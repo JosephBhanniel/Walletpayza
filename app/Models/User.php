@@ -42,7 +42,8 @@ class User extends Authenticatable
         'two_factor_recovery_codes',
         'two_factor_secret',
     ];
-
+  
+      
 
 
         public function isCompany()
@@ -55,6 +56,11 @@ class User extends Authenticatable
         return $this->role === 'Employee'; // Replace 'employee' with your actual employee role identifier
     }
 
+
+    public function isAdmin()
+    {
+        return $this->role === 'Admin'; // Replace 'company' with your actual company role identifier
+    }
 
     /**
      * The attributes that should be cast.

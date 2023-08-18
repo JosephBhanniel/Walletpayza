@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\SuperAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,17 @@ Route::middleware([
     'role:Employee', // Adjust the role name(s) as needed
 ])->group(function () {
     Route::get('/Employee', [EmployeeController::class, 'index'])->name('dashboard');
+    // Add more admin-specific routes here
+});
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    'role:Admin', // Adjust the role name(s) as needed
+])->group(function () {
+    Route::get('/Admin', [SuperAdminController::class, 'index'])->name('dashboard');
     // Add more admin-specific routes here
 });
 

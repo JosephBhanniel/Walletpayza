@@ -30,6 +30,15 @@ class CompanyController extends Controller
         // Perform deposit logic
         $wallet->balance += $request->input('depositAmount');
         $wallet->save();  
+
+        // Create wallet transaction records to track the transfer
+        Transactions::create([
+            'sender_wallet_id' => $wallet->id,
+            'receiver_wallet_id' => $wallet->id,
+            'amount' => $wallet->balance += $request->input('depositAmount'),
+            'transaction_type' => 'deposit',
+        ]);
+
         return redirect()->back()->with('success', 'Money Deposited to Company wallet.');
         
     }
